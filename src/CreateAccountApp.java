@@ -1,3 +1,7 @@
+// Quincy Yarbrough
+// 7/25/2024
+// updated a create account app to accept phone numbers and email
+
 import java.util.Scanner;
 
 public class CreateAccountApp {
@@ -10,10 +14,10 @@ public class CreateAccountApp {
 
         String password = getPassword();
         System.out.println();
-
+        // to get email
         String email = getEmail();
         System.out.println();
-
+        // to get phone number
         String phone = getPhone();
         System.out.println();
 
@@ -61,7 +65,7 @@ public class CreateAccountApp {
             }
         }
     }
-
+    // function to retrieve email from user
     private static String getEmail() {
         while (true) {
             System.out.print("Enter EMail: ");
@@ -81,31 +85,31 @@ public class CreateAccountApp {
                 return email;
 
             } else {
-                System.out.println("Please enter a valid EMail address.");
+                System.out.println("Please enter a valid EMail address.\n");
             }
 
         }
     }
-
+    // function to retrieve phone number from user
     private static String getPhone() {
         while (true) {
             System.out.print("Enter phone number: ");
             String phone = sc.nextLine().trim();
-
+            // used to strip the number clean
             phone = phone.replaceAll("\\D", "");
-
+            // check for length and format the number
             if (phone.length() == 10) {
                 return phone.replaceFirst("(\\d{3})(\\d{3})(\\d{4})", "$1.$2.$3");
             } else {
-                System.out.println("Please enter a valid phone number.");
+                System.out.println("Please enter a valid phone number\n.");
             }
         }
 
     }
-
+    // updated success message
     private static String getSuccessMessage(String fullName, String phone) {
         int index = fullName.indexOf(" ");
         String firstName = fullName.substring(0,1).toUpperCase() + fullName.substring(1, index).toLowerCase();
-        return "Hi " + firstName + ", thanks for creating an account!\nWe will text your confirmation code to this number:  " + phone;
+        return "Hi " + firstName + ", thanks for creating an account! We will text your confirmation code to this number:  " + phone;
     }
 }
